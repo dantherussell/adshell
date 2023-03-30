@@ -6,7 +6,9 @@ cask 'ghostty'
 brew 'git'
 brew 'jq'
 brew 'neovim'
-brew 'tmux'
+# brew 'tmux'
+# brew 'watch'
+cask 'wezterm'
 
 # Better terminal tools
 brew 'bat'
@@ -29,17 +31,20 @@ brew 'vale'
 brew 'watch'
 brew 'witr'
 
-# Essentials
-cask '1password'
-cask 'alfred'
-cask 'firefox'
-cask 'flameshot'
-cask 'keybase'
-cask 'obsidian'
-cask 'proton-mail'
-cask 'rectangle'
-cask 'secretive'
-cask 'spotify'
+# Generally useful apps
+# cask '1password'
+# cask 'alfred'
+# cask 'flameshot'
+# cask 'keybase'
+# cask 'monitorcontrol'
+# cask 'obsidian'
+# cask 'rectangle'
+# cask 'secretive'
+# cask 'spotify'
+
+# # Browser corner
+# cask 'firefox'
+# cask 'google-chrome'
 
 # Better fonts for dev
 cask 'font-hasklig'
