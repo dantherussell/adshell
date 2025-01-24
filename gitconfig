@@ -7,6 +7,8 @@
   c = commit
   ca = commit -a
   caa = commit -a --amend -CHEAD
+  cm = commit -m
+  cwip = commit -m "[skip ci] WIP"
   cl = clean -fd
   cleanup = "!git branch --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
   co = checkout
@@ -14,8 +16,10 @@
   com="! source $HOME/.adshell/functions ; git checkout $(_master_branch)"
   copr = "!git fetch origin pull/$1/head:pr$1 && git checkout -q pr$1 && echo Switched to PR"
   cp = cherry-pick
-  d="! source $HOME/.adshell/functions && git_diff_fzf"
-  dc="! source $HOME/.adshell/functions && git_diff_fzf --cached"
+  d=diff
+  dc=diff --cached
+  dt=difftool
+  dtc=difftool --cached
   ff = merge --ff-only
   l = log --graph --pretty=format:'%<(10)%C(bold green)%h%C(reset) %><(16)%C(yellow)%ar%C(reset) %<(16)%C(blue)%an%Creset %C(auto)%d%C(reset) %s' --abbrev-commit
   ls = shortlog -sn
@@ -53,6 +57,10 @@
 
 [rebase]
   autostash = true
+	updateRefs = true
+
+[rerere]
+	enabled = true
 
 [core]
   excludesfile = ~/.adshell/gitignore
@@ -68,18 +76,20 @@
 [push]
   default = current
 
+[init]
+	defaultBranch = master
+
 [diff]
-  meta       = "yellow"
-  frag       = "magenta bold"
-  commit     = "yellow bold"
-  old        = "red bold"
-  new        = "green bold"
-  whitespace = "red reverse"
-[diff-highlight]
-  oldNormal    = "red bold"
-  oldHighlight = "red bold 52"
-  newNormal    = "green bold"
-  newHighlight = "green bold 22"
+  tool = difftastic
+
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+  difftool = true
 
 [diff "ansible-vault"]
   textconv = ansible-vault view
