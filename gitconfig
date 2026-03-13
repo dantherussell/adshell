@@ -14,7 +14,7 @@
   co = checkout
   col="! source $HOME/.adshell/functions ; git_checkout_fzf"
   com="! source $HOME/.adshell/functions ; git checkout $(_master_branch)"
-  copr = "!git fetch origin pull/$1/head:pr$1 && git checkout -q pr$1 && echo Switched to PR"
+  copr = "!git fetch origin pull/$1/head:pr-$1 && git checkout -q pr-$1 && echo Switched to PR"
   cp = cherry-pick
   d=diff
   dc=diff --cached
@@ -97,13 +97,16 @@
 [merge]
   keepBackup = false
   defaultToUpstream = true
-  tool = nvimdiff
+  # tool = nvimdiff
+  tool = codediff
 [mergetool]
   keepBackup = false
   prompt = false
 [mergetool "diffmerge"]
   cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
   trustExitCode = true
+[mergetool "codediff"]
+	cmd = nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\"
 
 [url "git@github.com:"]
   insteadOf = "gh:"

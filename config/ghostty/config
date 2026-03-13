@@ -1,0 +1,9 @@
+window-decoration = false
+
+font-size = 14
+font-family = Hasklig
+font-family = Symbols Nerd Font
+
+adjust-cell-height = 20%
+
+theme = adcode
