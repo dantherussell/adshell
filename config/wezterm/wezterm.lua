@@ -32,7 +32,7 @@ local function scheme_for_appearance(appearance)
   end
 end
 
-config.enable_tab_bar = false
+config.enable_tab_bar = true
 
 -- STFU
 config.audible_bell = "Disabled"
@@ -41,7 +41,7 @@ config.audible_bell = "Disabled"
 config.color_scheme = "adTerm"
 config.window_decorations = "RESIZE"
 config.font = wezterm.font('Hasklig', { weight = 'Medium' })
-config.font_size = 16.0
+config.font_size = 14.0
 config.line_height = 1.1
 config.cursor_thickness = 2.0
 
@@ -97,6 +97,8 @@ config.keys = {
     action = wezterm.action.DisableDefaultAssignment,
   },
 }
+
+config.enable_kitty_keyboard = true
 
 
 return config
